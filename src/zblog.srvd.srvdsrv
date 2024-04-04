@@ -1,0 +1,4 @@
+@EndUserText.label: 'Blog service definition'
+define service ZBLOG {
+  expose ZI_BLOG as blog;
+}

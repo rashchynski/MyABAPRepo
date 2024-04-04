@@ -1,0 +1,26 @@
+managed implementation in class zbp_c_blog unique;
+strict ( 2 );
+
+define behavior for ZC_BLOG //alias <alias_name>
+persistent table zblog
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _tag { create; }
+}
+
+define behavior for ZI_BLOG_TO_TAG //alias <alias_name>
+persistent table zblog_to_tag
+lock dependent by _blog
+authorization dependent by _blog
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) BlogId;
+  association _blog;
+}
